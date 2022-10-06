@@ -1,4 +1,5 @@
 %% Velocity - given a, b, w2, tk {k e N | [2, 3, 4]}
+set(0, 'DefaultTextInterpreter', 'Latex')
 
 w3v = linspace(0,1,N)';
 w4v = linspace(0,1,N)';
@@ -10,15 +11,26 @@ end
 
 clear iter
 
-% Ploting
+%% Linear Velocity
+
+vA = 1i*a.*w2v.*exp(1i.*t2v);
+
+vA = abs(vA);
+
+vB = 1i*c.*w4v.*exp(1i.*t4v);
+
+vB
+
+vB = abs(vB);
+%% Ploting - Angular Velocity
 
 figure(2);
 
 plot(t, w3v, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 1 - a', 'FontName', 'Times', 'FontSize', 12)
-xlabel('b', 'FontName', 'Times', 'FontSize', 12)
-ylabel('c', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 1 - Omega 3', 'FontName', 'Times', 'FontSize', 12)
+xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
+ylabel('Velocidade Angular, (rad/s)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
@@ -26,9 +38,9 @@ figure(3);
 
 plot(t, w4v, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 2 - c', 'FontName', 'Times', 'FontSize', 12)
-xlabel('b', 'FontName', 'Times', 'FontSize', 12)
-ylabel('a', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 2 - Omega 4', 'FontName', 'Times', 'FontSize', 12)
+xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
+ylabel('Velocidade Angular, (rad/s)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
@@ -52,9 +64,9 @@ figure(4);
 
 plot(t, a3a, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 3 - a', 'FontName', 'Times', 'FontSize', 12)
-xlabel('b', 'FontName', 'Times', 'FontSize', 12)
-ylabel('c', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 3 - Alpha 3', 'FontName', 'Times', 'FontSize', 12)
+xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
+ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
@@ -62,8 +74,8 @@ figure(5);
 
 plot(t, a4a, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 4 - c', 'FontName', 'Times', 'FontSize', 12)
-xlabel('b', 'FontName', 'Times', 'FontSize', 12)
-ylabel('a', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 4 - Alpha 4', 'FontName', 'Times', 'FontSize', 12)
+xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
+ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
