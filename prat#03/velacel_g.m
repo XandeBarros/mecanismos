@@ -24,43 +24,33 @@ vB = abs(vB);
 
 figure(2);
 
-plot(t, w3v, 'r-', 'LineWidth', 1.5);
+plot(t, w3v, 'k-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 1 - Omega 3', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 1 - Velocidades \omega_3 e \omega_4', 'FontName', 'Times', 'FontSize', 12)
 xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
 ylabel('Velocidade Angular, (rad/s)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
-
-figure(3);
 
 plot(t, w4v, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 2 - Omega 4', 'FontName', 'Times', 'FontSize', 12)
-xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
-ylabel('Velocidade Angular, (rad/s)', 'FontName', 'Times', 'FontSize', 12)
-
-grid on;
+legend('\omega_3', '\omega_4', 'northwest');
 
 %% Ploting - Linear Velocity - vA and vB
 
-figure(4);
+figure(3);
 
-plot(t, vA, 'r-', 'LineWidth', 1.5);
+plot(t, vA, 'k-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 3 - Velocidade A', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 2 - Velocidades no Ponto A e B', 'FontName', 'Times', 'FontSize', 12)
 xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
 ylabel('Velocidade, (m/s)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
-figure(5);
-
 plot(t, vB, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 4 - Velocidade B', 'FontName', 'Times', 'FontSize', 12)
-xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
-ylabel('Velocidade, (m/s)', 'FontName', 'Times', 'FontSize', 12)
+legend('v_A', 'v_B', 'northwest')
 
 grid on;
 
@@ -73,12 +63,12 @@ for iter = 1:length(a3a)
     A = c*sin(t4v(iter)); B = b*sin(t4v(iter)); D = c*cos(t4v(iter)); E = b*cos(t3v(iter));
     C = a*a2a*sin(t2v(iter)) + a*(w2v(iter)^2)*cos(t2v(iter)) + b*(w3v(iter)^2)*cos(t3v(iter)) - c*(w4v(iter)^2)*cos(t4v(iter));
     F = a*a2a*cos(t2v(iter)) - a*(w2v(iter)^2)*sin(t2v(iter)) - b*(w3v(iter)^2)*sin(t3v(iter)) + c*(w4v(iter)^2)*sin(t4v(iter));
-    
+
     a3a(iter) = (C*D - A*F)/(A*E-B*D);
     a4a(iter) = (C*E - B*F)/(A*E-B*D);
 end
 
-%% Linear Acceleration 
+%% Linear Acceleration
 
 aA = (1i.*a2a - w2v.^2)*a.*exp(1i.*t2v);
 
@@ -90,44 +80,35 @@ aB = abs(aB);
 
 %% Ploting - Angular Acceleration
 
-figure(6);
+figure(4);
 
-plot(t, a3a, 'r-', 'LineWidth', 1.5);
+plot(t, a3a, 'k-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 5 - Alpha 3', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 4 - Alpha 3 e Alpha 4', 'FontName', 'Times', 'FontSize', 12)
 xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
 ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
-figure(7);
-
 plot(t, a4a, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 6 - Alpha 4', 'FontName', 'Times', 'FontSize', 12)
-xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
-ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
+legend('\alpha_3', '\alpha_4', 'northwest');
 
 grid on;
 
 %% Ploting - Linear Acceleration
 
-figure(8);
+figure(5);
 
-plot(t, aA, 'r-', 'LineWidth', 1.5);
+plot(t, aA, 'k-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 7 - Aceleração Linear A', 'FontName', 'Times', 'FontSize', 12)
+title('Gráfico 5 - Aceleração Linear no Ponto A e B', 'FontName', 'Times', 'FontSize', 12)
 xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
 ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
 
 grid on;
 
-figure(9);
-
 plot(t, aB, 'r-', 'LineWidth', 1.5);
 hold on;
-title('Gráfico 8 - Aceleração Linear B', 'FontName', 'Times', 'FontSize', 12)
-xlabel('Tempo, (s)', 'FontName', 'Times', 'FontSize', 12)
-ylabel('Aceleração Angular, (rad/s^2)', 'FontName', 'Times', 'FontSize', 12)
-
+legend('a_A', 'a_B', 'northwest');
 grid on;
